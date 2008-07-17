@@ -1,22 +1,21 @@
-<h1>Listing contexts</h1>
+<h1>Listing Contexts</h1>
 
 <table>
   <tr>
     <th>Name</th>
     <th>Note</th>
+    <th width=3>Actions</th>
   </tr>
-
-<% for context in @contexts %>
-  <tr>
-    <td><%=h context.name %></td>
-    <td><%=h context.note %></td>
-    <td><%= link_to 'Show', context %></td>
-    <td><%= link_to 'Edit', edit_context_path(context) %></td>
-    <td><%= link_to 'Destroy', context, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+  <%- @contexts.each do |context|%>
+    <tr>
+      <td><%= h context.name  %></td>
+      <td><%= h context.note%> </td>
+      <td><%=link_to 'Show', object_url(context) %></td>
+      <td><%=link_to 'Edit', edit_object_url(context) %></td>
+      <td><%=link_to 'Destroy', object_url(context), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
 </table>
+<br/>
 
-<br />
-
-<%= link_to 'New context', new_context_path %>
+<%= link_to 'New Context', new_object_url %>

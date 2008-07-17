@@ -1,8 +1,22 @@
 ActionController::Routing::Routes.draw do |map|
+  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
+  map.login '/login', :controller => 'sessions', :action => 'new'
+  map.register '/register', :controller => 'users', :action => 'create'
+  map.signup '/signup', :controller => 'users', :action => 'new'
+
+  map.resources :users do |user|
+    user.resources :projects, :has_many => :tasks
+    user.resources :contexts, :has_many => :tasks
+    user.resources :tasks
+  end
 
   map.resources :projects, :has_many => :tasks
   map.resources :contexts, :has_many => :tasks
   map.resources :tasks
+
+  map.resource :session
+
+ 
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -43,4 +57,6 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
+
+  map.root :controller => 'projects', :action => 'index'
 end

@@ -1,9 +1,4 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
 one:
-  name: MyString
-  note: MyText
-
+  id: 1
 two:
-  name: MyString
-  note: MyText
+  id: 2

@@ -1,38 +1,4 @@
-<p>
-  <b>Name:</b>
-  <%=h @task.name %>
-</p>
 
-<p>
-  <b>Project:</b>
-  <%=h @task.project_id %>
-</p>
-
-<p>
-  <b>Context:</b>
-  <%=h @task.context_id %>
-</p>
-
-<p>
-  <b>Due:</b>
-  <%=h @task.due %>
-</p>
-
-<p>
-  <b>Completed:</b>
-  <%=h @task.completed %>
-</p>
-
-<p>
-  <b>Note:</b>
-  <%=h @task.note %>
-</p>
-
-<p>
-  <b>Time spent:</b>
-  <%=h @task.time_spent %>
-</p>
-
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<%= link_to 'Edit', edit_object_url %>
+|
+<%= link_to 'Back', collection_url %>

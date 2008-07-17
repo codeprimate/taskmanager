@@ -1,45 +1,57 @@
-require 'test_helper'
+require File.dirname(__FILE__) + '/../test_helper'
+require 'tasks_controller'
 
-class TasksControllerTest < ActionController::TestCase
+# Re-raise errors caught by the controller.
+class TasksController; def rescue_action(e) raise e end; end
+
+class TasksControllerTest < Test::Unit::TestCase
+  fixtures :tasks
+
+  def setup
+    @controller = TasksController.new
+    @request    = ActionController::TestRequest.new
+    @response   = ActionController::TestResponse.new
+  end
+
   def test_should_get_index
     get :index
     assert_response :success
-    assert_not_nil assigns(:tasks)
+    assert assigns(:tasks)
   end
 
   def test_should_get_new
     get :new
     assert_response :success
   end
-
+  
   def test_should_create_task
-    assert_difference('Task.count') do
-      post :create, :task => { }
-    end
-
+    old_count = Task.count
+    post :create, :task => { }
+    assert_equal old_count+1, Task.count
+    
     assert_redirected_to task_path(assigns(:task))
   end
 
   def test_should_show_task
-    get :show, :id => tasks(:one).id
+    get :show, :id => 1
     assert_response :success
   end
 
   def test_should_get_edit
-    get :edit, :id => tasks(:one).id
+    get :edit, :id => 1
     assert_response :success
   end
-
+  
   def test_should_update_task
-    put :update, :id => tasks(:one).id, :task => { }
+    put :update, :id => 1, :task => { }
     assert_redirected_to task_path(assigns(:task))
   end
-
+  
   def test_should_destroy_task
-    assert_difference('Task.count', -1) do
-      delete :destroy, :id => tasks(:one).id
-    end
-
+    old_count = Task.count
+    delete :destroy, :id => 1
+    assert_equal old_count-1, Task.count
+    
     assert_redirected_to tasks_path
   end
 end

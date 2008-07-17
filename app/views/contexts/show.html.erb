@@ -1,13 +1,4 @@
-<p>
-  <b>Name:</b>
-  <%=h @context.name %>
-</p>
 
-<p>
-  <b>Note:</b>
-  <%=h @context.note %>
-</p>
-
-
-<%= link_to 'Edit', edit_context_path(@context) %> |
-<%= link_to 'Back', contexts_path %>
+<%= link_to 'Edit', edit_object_url %>
+|
+<%= link_to 'Back', collection_url %>

@@ -3,10 +3,10 @@ class CreateContexts < ActiveRecord::Migration
     create_table :contexts do |t|
       t.string :name
       t.text :note
-
+      t.integer :user_id
       t.timestamps
     end
-    Context.create(:name => "Inbox")
+    add_index :contexts, :user_id
   end
 
   def self.down

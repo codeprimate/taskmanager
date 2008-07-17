@@ -1,13 +1,4 @@
-<p>
-  <b>Name:</b>
-  <%=h @project.name %>
-</p>
 
-<p>
-  <b>Note:</b>
-  <%=h @project.note %>
-</p>
-
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Edit', edit_object_url %>
+|
+<%= link_to 'Back', collection_url %>

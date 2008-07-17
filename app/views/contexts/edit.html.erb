@@ -1,20 +1,16 @@
-<h1>Editing context</h1>
+<h1>Editing Context</h1>
 
-<% form_for(@context) do |f| %>
-  <%= f.error_messages %>
+<%= error_messages_for :context %>
 
+<% form_for(:context, :url => object_url, :html => { :method => :put }) do |f| %>
+  <%= render :partial => "form", :locals => { :f => f } %>
   <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :note %><br />
-    <%= f.text_area :note %>
-  </p>
-  <p>
-    <%= f.submit "Update" %>
+    <%=submit_tag "Update"%>
   </p>
 <% end %>
 
-<%= link_to 'Show', @context %> |
-<%= link_to 'Back', contexts_path %>
+<br/>
+
+<%= link_to 'Show', object_url %>
+|
+<%= link_to 'Back', collection_url %>

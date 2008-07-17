@@ -4,6 +4,7 @@ class CreateTasks < ActiveRecord::Migration
       t.string :name
       t.integer :project_id
       t.integer :context_id
+      t.integer :user_id
       t.datetime :due
       t.datetime :completed
       t.text :note
@@ -12,6 +13,7 @@ class CreateTasks < ActiveRecord::Migration
     end
     add_index :tasks, :project_id
     add_index :tasks, :context_id
+     add_index :tasks, :user_id
   end
 
   def self.down

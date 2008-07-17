@@ -9,26 +9,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080717030858) do
+ActiveRecord::Schema.define(:version => 20080717143858) do
 
   create_table "contexts", :force => true do |t|
     t.string   "name"
     t.text     "note"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "contexts", ["user_id"], :name => "index_contexts_on_user_id"
+
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.text     "note"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
 
   create_table "tasks", :force => true do |t|
     t.string   "name"
     t.integer  "project_id"
     t.integer  "context_id"
+    t.integer  "user_id"
     t.datetime "due"
     t.datetime "completed"
     t.text     "note"
@@ -37,7 +44,24 @@ ActiveRecord::Schema.define(:version => 20080717030858) do
     t.datetime "updated_at"
   end
 
+  add_index "tasks", ["user_id"], :name => "index_tasks_on_user_id"
   add_index "tasks", ["context_id"], :name => "index_tasks_on_context_id"
   add_index "tasks", ["project_id"], :name => "index_tasks_on_project_id"
+
+  create_table "users", :force => true do |t|
+    t.string   "login",                     :limit => 40
+    t.string   "name",                      :limit => 100, :default => ""
+    t.string   "email",                     :limit => 100
+    t.string   "crypted_password",          :limit => 40
+    t.string   "salt",                      :limit => 40
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "remember_token",            :limit => 40
+    t.datetime "remember_token_expires_at"
+    t.string   "activation_code",           :limit => 40
+    t.datetime "activated_at"
+  end
+
+  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
 
 end

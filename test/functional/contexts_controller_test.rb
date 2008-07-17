@@ -1,45 +1,57 @@
-require 'test_helper'
+require File.dirname(__FILE__) + '/../test_helper'
+require 'contexts_controller'
 
-class ContextsControllerTest < ActionController::TestCase
+# Re-raise errors caught by the controller.
+class ContextsController; def rescue_action(e) raise e end; end
+
+class ContextsControllerTest < Test::Unit::TestCase
+  fixtures :contexts
+
+  def setup
+    @controller = ContextsController.new
+    @request    = ActionController::TestRequest.new
+    @response   = ActionController::TestResponse.new
+  end
+
   def test_should_get_index
     get :index
     assert_response :success
-    assert_not_nil assigns(:contexts)
+    assert assigns(:contexts)
   end
 
   def test_should_get_new
     get :new
     assert_response :success
   end
-
+  
   def test_should_create_context
-    assert_difference('Context.count') do
-      post :create, :context => { }
-    end
-
+    old_count = Context.count
+    post :create, :context => { }
+    assert_equal old_count+1, Context.count
+    
     assert_redirected_to context_path(assigns(:context))
   end
 
   def test_should_show_context
-    get :show, :id => contexts(:one).id
+    get :show, :id => 1
     assert_response :success
   end
 
   def test_should_get_edit
-    get :edit, :id => contexts(:one).id
+    get :edit, :id => 1
     assert_response :success
   end
-
+  
   def test_should_update_context
-    put :update, :id => contexts(:one).id, :context => { }
+    put :update, :id => 1, :context => { }
     assert_redirected_to context_path(assigns(:context))
   end
-
+  
   def test_should_destroy_context
-    assert_difference('Context.count', -1) do
-      delete :destroy, :id => contexts(:one).id
-    end
-
+    old_count = Context.count
+    delete :destroy, :id => 1
+    assert_equal old_count-1, Context.count
+    
     assert_redirected_to contexts_path
   end
 end
