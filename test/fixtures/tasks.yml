@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  project_id: 1
+  context_id: 1
+  due: 2008-07-16 22:06:47
+  completed: 2008-07-16 22:06:47
+  note: MyText
+  time_spent: 1
+
+two:
+  name: MyString
+  project_id: 1
+  context_id: 1
+  due: 2008-07-16 22:06:47
+  completed: 2008-07-16 22:06:47
+  note: MyText
+  time_spent: 1

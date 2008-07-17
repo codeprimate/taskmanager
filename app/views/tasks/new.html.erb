@@ -1,0 +1,39 @@
+<h1>New task</h1>
+
+<% form_for(@task) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :project_id %><br />
+    <%= f.text_field :project_id %>
+  </p>
+  <p>
+    <%= f.label :context_id %><br />
+    <%= f.text_field :context_id %>
+  </p>
+  <p>
+    <%= f.label :due %><br />
+    <%= f.datetime_select :due %>
+  </p>
+  <p>
+    <%= f.label :completed %><br />
+    <%= f.datetime_select :completed %>
+  </p>
+  <p>
+    <%= f.label :note %><br />
+    <%= f.text_area :note %>
+  </p>
+  <p>
+    <%= f.label :time_spent %><br />
+    <%= f.text_field :time_spent %>
+  </p>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', tasks_path %>
