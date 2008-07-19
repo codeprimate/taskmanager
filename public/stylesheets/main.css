@@ -1,0 +1,30 @@
+p label {
+    vertical-align: top;
+}
+
+ul.h li {
+    list-style: none;
+    display: inline;
+}
+
+.context_list {
+    font-size: 1.5em;
+}
+
+ul.context_list {
+    padding: 0;
+    margin: 0;
+}
+
+.context_list li {
+    padding-right: 1em;
+}
+
+form label {
+    width: 5em;
+    display: block;
+    float: left;
+    font-weight: bold;
+    text-align: right;
+    margin-right: 0.5em;
+}

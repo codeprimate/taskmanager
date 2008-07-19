@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/idea_portal/!svn/ver/358/trunk/vendor/plugins/resource_controller/lib/resource_controller
+END
+handler.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/idea_portal/!svn/ver/121/trunk/vendor/plugins/resource_controller/lib/resource_controller/handler.rb
+END
+actions.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/idea_portal/!svn/ver/113/trunk/vendor/plugins/resource_controller/lib/resource_controller/actions.rb
+END
+helpers.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/idea_portal/!svn/ver/113/trunk/vendor/plugins/resource_controller/lib/resource_controller/helpers.rb
+END
+controller.rb
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/idea_portal/!svn/ver/327/trunk/vendor/plugins/resource_controller/lib/resource_controller/controller.rb
+END
+default_actions.rb
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/idea_portal/!svn/ver/121/trunk/vendor/plugins/resource_controller/lib/resource_controller/default_actions.rb
+END
+response_collector.rb
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svn/idea_portal/!svn/ver/121/trunk/vendor/plugins/resource_controller/lib/resource_controller/response_collector.rb
+END
+accessors.rb
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/idea_portal/!svn/ver/121/trunk/vendor/plugins/resource_controller/lib/resource_controller/accessors.rb
+END
+failable_action_options.rb
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/idea_portal/!svn/ver/121/trunk/vendor/plugins/resource_controller/lib/resource_controller/failable_action_options.rb
+END
+action_options.rb
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/idea_portal/!svn/ver/121/trunk/vendor/plugins/resource_controller/lib/resource_controller/action_options.rb
+END
+class_methods.rb
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/idea_portal/!svn/ver/121/trunk/vendor/plugins/resource_controller/lib/resource_controller/class_methods.rb
+END
+base.rb
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/idea_portal/!svn/ver/113/trunk/vendor/plugins/resource_controller/lib/resource_controller/base.rb
+END
+definer.rb
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/idea_portal/!svn/ver/121/trunk/vendor/plugins/resource_controller/lib/resource_controller/definer.rb
+END

@@ -18,7 +18,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :email,    :case_sensitive => false
   validates_format_of       :email,    :with => RE_EMAIL_OK, :message => MSG_EMAIL_BAD
 
-  before_create :make_activation_code 
+  before_create :make_activation_code
+  after_create :make_inbox_context
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
@@ -36,6 +37,10 @@ class User < ActiveRecord::Base
 
   def find_by_param(*args)
     find_by_login(*args)
+  end
+
+  def make_inbox_context
+    contexts.create(:name => "Inbox")
   end
 
   # Activates the user in the database.

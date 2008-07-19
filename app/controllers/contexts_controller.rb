@@ -3,10 +3,11 @@ class ContextsController < ResourceController::Base
 
   belongs_to :user
 
+  layout 'main'
+
   create do
     build do
-      params[:context][:user] = self.current_user
-      @object = Context.create(params[:context])
+      @object = self.current_user.contexts.create(params[:context])
     end
   end
 
@@ -15,7 +16,7 @@ class ContextsController < ResourceController::Base
 
 
   def object
-    @object ||= self.current_user.contexts.find(param)
+    @object ||= self.current_user.contexts.find_by_permalink(param)
   end
 
   def collection

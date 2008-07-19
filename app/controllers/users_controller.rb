@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
-  
+
+  before_filter :login_required, :only => :show
+
+  layout 'main'
 
   # render new.rhtml
   def new
@@ -36,5 +39,9 @@ class UsersController < ApplicationController
       flash[:error]  = "We couldn't find a user with that activation code -- check your email? Or maybe you've already activated -- try signing in."
       redirect_back_or_default('/')
     end
+  end
+
+  def show
+    @user = self.current_user
   end
 end

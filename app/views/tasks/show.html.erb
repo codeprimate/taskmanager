@@ -1,3 +1,8 @@
+<h1>
+    <%= (@object.context ? h(@object.context.name) : "(No Context)") %> :
+<%= (@object.project ? h(@object.project.name) : "(No Project)") %></h1>
+
+<h2><%= h @object.name %></h2>
 
 <%= link_to 'Edit', edit_object_url %>
 |

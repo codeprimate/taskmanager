@@ -1,0 +1,133 @@
+8
+
+dir
+433
+https://masterwebdesign.dyndns.org/svn/idea_portal/trunk/vendor/plugins/resource_controller
+https://masterwebdesign.dyndns.org/svn/idea_portal
+
+
+
+2008-07-09T15:08:42.113789Z
+358
+russell
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+20366887-0afc-4711-b883-af2f3cd696fd
+
+.git
+dir
+
+LICENSE
+file
+
+
+
+
+2008-06-28T05:20:33.000000Z
+a531a1c4161d77e1899139f4f7100d0d
+2008-06-18T15:52:18.844950Z
+113
+russell
+
+Rakefile
+file
+
+
+
+
+2008-06-28T05:20:33.000000Z
+10ee4a4b4f9fb4734e13c7ae37298ad7
+2008-06-18T15:52:18.844950Z
+113
+russell
+
+.gitignore
+file
+
+
+
+
+2008-06-28T05:20:33.000000Z
+6743c7520a2f11fb600e1be781c97e8c
+2008-06-18T19:42:36.368735Z
+121
+russell
+
+TODO
+file
+
+
+
+
+2008-06-28T05:20:33.000000Z
+d24f8537ddf33ed91f129a352d5b2ae0
+2008-06-18T15:52:18.844950Z
+113
+russell
+
+init.rb
+file
+
+
+
+
+2008-06-28T05:20:33.000000Z
+9bd7001627edec9bff59e4b291b8a575
+2008-06-19T20:15:49.171044Z
+135
+russell
+
+lib
+dir
+
+install.rb
+file
+
+
+
+
+2008-06-28T05:20:33.000000Z
+cbe738c10eba4ae2da8c6859c9723e44
+2008-06-18T15:52:18.844950Z
+113
+russell
+
+generators
+dir
+
+uninstall.rb
+file
+
+
+
+
+2008-06-28T05:20:33.000000Z
+2a5fc883fe7f8dfe22ced24643d59ad4
+2008-06-18T15:52:18.844950Z
+113
+russell
+
+README
+file
+
+
+
+
+2008-06-28T05:20:33.000000Z
+237e82222c74967b5602e09b92ed2068
+2008-06-23T18:32:39.542353Z
+165
+russell
+

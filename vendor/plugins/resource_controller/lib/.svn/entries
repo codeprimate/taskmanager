@@ -1,0 +1,55 @@
+8
+
+dir
+433
+https://masterwebdesign.dyndns.org/svn/idea_portal/trunk/vendor/plugins/resource_controller/lib
+https://masterwebdesign.dyndns.org/svn/idea_portal
+
+
+
+2008-07-09T15:08:42.113789Z
+358
+russell
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+20366887-0afc-4711-b883-af2f3cd696fd
+
+urligence.rb
+file
+
+
+
+
+2008-06-28T05:20:33.000000Z
+d4e0858247a888c166c759f5e7f0c7e9
+2008-06-18T15:52:18.844950Z
+113
+russell
+
+resource_controller
+dir
+
+resource_controller.rb
+file
+
+
+
+
+2008-06-28T05:20:33.000000Z
+0cac83b46d025707b7f33497656ed50f
+2008-06-18T19:42:36.368735Z
+121
+russell
+

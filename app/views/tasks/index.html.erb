@@ -1,16 +1,24 @@
 <h1>Listing Tasks</h1>
 
 <table>
-  <tr>
-  </tr>
-  <%- @tasks.each do |task|%>
     <tr>
-    
-      <td><%=link_to 'Show', object_url(task) %></td>
-      <td><%=link_to 'Edit', edit_object_url(task) %></td>
-      <td><%=link_to 'Destroy', object_url(task), :confirm => 'Are you sure?', :method => :delete %></td>
+        <th>Context</th>
+        <th>Project</th>
+        <th>Name</th>
+        <th>Note</th>
+        <th colspan=3>Actions</th>
     </tr>
-  <% end %>
+    <%- @tasks.each do |task|%>
+    <tr>
+        <td><%= (task.context ? h(task.context.name) : "None") %></td>
+        <td><%= (task.project ? h(task.project.name) : "None") %></td>
+        <td><%= h task.name %></td>
+        <td><%= h task.note %></td>
+        <td><%=link_to 'Show', object_url(task) %></td>
+        <td><%=link_to 'Edit', edit_object_url(task) %></td>
+        <td><%=link_to 'Destroy', object_url(task), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+    <% end %>
 </table>
 <br/>
 
