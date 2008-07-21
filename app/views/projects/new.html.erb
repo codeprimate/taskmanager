@@ -6,7 +6,10 @@
   <%= render :partial => "form", :locals => { :f => f } %>
   <p>
     <%= submit_tag "Create" %>
+    <%= link_to("Cancel", :back) %>
   </p>
 <% end %>
-<br/>
-<%= link_to 'Back', collection_url %>
+
+<script type="text/javascript">
+    $('project_name').focus();
+</script>

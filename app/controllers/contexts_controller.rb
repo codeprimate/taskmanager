@@ -5,30 +5,19 @@ class ContextsController < ResourceController::Base
 
   layout 'main'
 
-  create do
-    build do
-      @object = self.current_user.contexts.create(params[:context])
-    end
-  end
+  create.build { @object = self.current_user.contexts.create(params[:context]) }
 
-  show do
-    after do
-      session[:current_context] = object.id
-      @tasks = contextual_task_finder(object)
-    end
+  show.after do
+    session[:current_context] = object.id
+    @tasks = contextual_task_finder(object)
   end
 
   def reset
     session[:current_context] = nil
-    if current_project
-      redirect_to project_path(current_project)
-    else
-      redirect_to root_path
-    end
+    redirect_to_current_context
   end
   
   private
-
 
   def object
     @object ||= self.current_user.contexts.find_by_permalink(param)

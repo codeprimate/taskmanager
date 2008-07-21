@@ -1,5 +1,5 @@
 <%= render :partial => "tasks/task_list", :locals => {:tasks => @tasks} %>
 
-<%= link_to 'Edit', edit_object_url %>
-|
-<%= link_to 'Back', collection_url %>
+<p align=right>
+  <%= link_to("All Tasks", project_tasks_path(current_project)) %>
+</p>

@@ -1,7 +1,7 @@
 class Context < ActiveRecord::Base
   has_permalink :name
 
-  has_many :tasks
+  has_many :tasks, :order => "completed asc, created_at desc"
   belongs_to :user
 
   validates_presence_of :name

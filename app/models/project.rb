@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  has_many :tasks
+  has_many :tasks, :dependent => :destroy, :order => "completed asc, created_at desc"
   belongs_to :user
   validates_presence_of :name
   validates_presence_of :user_id

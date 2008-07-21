@@ -6,11 +6,9 @@
   <%= render :partial => "form", :locals => { :f => f } %>
   <p>
     <%=submit_tag "Update"%>
+    <%= link_to("Cancel", :back) %> | 
+    <%= link_to("Destroy", task_path(object), 
+                :method => :delete, 
+                :confirm => "Are you sure you want to destroy this task?") %>
   </p>
 <% end %>
-
-<br/>
-
-<%= link_to 'Show', object_url %>
-|
-<%= link_to 'Back', collection_url %>

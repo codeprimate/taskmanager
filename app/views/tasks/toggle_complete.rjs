@@ -1,0 +1,1 @@
+page.replace "task_#{object.id}", :partial => "tasks/task", :locals => {:task => object}

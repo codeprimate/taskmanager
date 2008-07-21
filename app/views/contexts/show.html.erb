@@ -1,1 +1,5 @@
 <%= render :partial => "tasks/task_list", :locals => {:tasks => @tasks} %>
+
+<p align=right>
+  <%= link_to("All Tasks", context_tasks_path(current_context)) %>
+</p>

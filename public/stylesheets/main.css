@@ -47,7 +47,9 @@ ul.context_list , ul.project_list {
 }
 
 ul.task_list {
-    list-style-type: decimal;
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 1em;
 }
 
 
@@ -66,4 +68,24 @@ div#management_links {
     border-bottom: 1px solid black;
     margin-bottom: 1em;
     text-align: right;
+}
+
+.completed {
+    text-decoration: line-through;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 1em;
+}
+
+table td {
+  padding: 0.3em;
+  border-top: 1px solid black;
+  margin: 0;
+}
+
+table th {
+    text-align: left;
+    padding-right: 2em;
 }

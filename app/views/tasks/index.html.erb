@@ -1,23 +1,26 @@
-<table>
-    <tr>
-        <th>Context</th>
-        <th>Project</th>
-        <th>Name</th>
-        <th>Note</th>
-        <th colspan=3>Actions</th>
-    </tr>
-    <%- @tasks.each do |task|%>
-    <tr>
-        <td><%= (task.context ? h(task.context.name) : "None") %></td>
-        <td><%= (task.project ? h(task.project.name) : "None") %></td>
-        <td><%= h task.name %></td>
-        <td><%= h task.note %></td>
-        <td><%=link_to 'Show', object_url(task) %></td>
-        <td><%=link_to 'Edit', edit_object_url(task) %></td>
-        <td><%=link_to 'Destroy', object_url(task), :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-    <% end %>
-</table>
-<br/>
+<h1>All Tasks In Context</h1>
 
-<%= link_to 'New Task', new_object_url %>
+<table>
+  <tr>
+    <th>Completed</th>
+    <th>Context</th>
+    <th>Project</th>
+    <th>Name</th>
+    <th>Note</th>
+    <th colspan=3>Actions</th>
+  </tr>
+  <%- @tasks.each do |task|%>
+    <tr>
+      <td><%= task.completed %></td>
+      <td><%= (task.context ? h(task.context.name) : "None") %></td>
+      <td><%= (task.project ? h(task.project.name) : "None") %></td>
+      <td><%= h task.name %></td>
+      <td><%= h task.note %></td>
+      <td><%=link_to 'Show', object_url(task) %></td>
+      <td><%=link_to 'Edit', edit_object_url(task) %></td>
+      <td><%=link_to 'Destroy', object_url(task), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to("Back", :back) %>

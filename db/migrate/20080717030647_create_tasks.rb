@@ -13,7 +13,7 @@ class CreateTasks < ActiveRecord::Migration
     end
     add_index :tasks, :project_id
     add_index :tasks, :context_id
-     add_index :tasks, :user_id
+    add_index :tasks, :user_id
   end
 
   def self.down

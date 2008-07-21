@@ -17,29 +17,73 @@ class ApplicationController < ActionController::Base
 
   include AuthenticatedSystem
 
+  # hacky hack! Overridden by resource_controller
   def parent_object
     nil
   end
 
-  
-  def contextual_task_finder(parent_obj)
+  # Find tasks that are children of the parent_obj filtered by the current 
+  # context as saved in the session or indicated by the resource path. Additionally
+  # these tasks are filtered by completion time, only showing uncompleted tasks
+  # or tasks that have been completed in the past day.
+  # 
+  # Optionally provide a second argument to indicate whether to return 
+  # completed tasks. Default is false.
+  def contextual_task_finder(parent_obj, show_completed=false)
+    recently_active_tasks_cond_str = " AND (completed IS NULL OR completed >= ?)"
+    recently_active_tasks_cond_args = [(Time.now - 1.day).to_s(:db)]
     if (current_project || current_context)
       conditions_arr = []
       conditions_args = []
       if current_context
-        conditions_arr << "context_id = #{current_context.id}"
+        conditions_arr << "context_id = ?"
         conditions_args << current_context.id
       end
       if current_project
-        conditions_arr << "project_id = #{current_project.id}"
+        conditions_arr << "project_id = ?"
         conditions_args << current_project.id
       end
       conditions_str = conditions_arr.join(' AND ')
+      conditions_str += recently_active_tasks_cond_str
+      conditions_args += recently_active_tasks_cond_args
       conditions = [conditions_str] + conditions_args
-      return parent_obj.tasks.find(:all, :conditions => conditions)
+puts conditions.inspect
+      if show_completed
+        parent_obj.tasks
+      else
+        return parent_obj.tasks.find(:all, :conditions => conditions)
+      end
     else
-      return parent_obj.tasks
+      if show_completed
+        return parent_obj.tasks
+      else
+        conditions = [recently_active_tasks_cond_str] + recently_active_tasks_cond_args
+        return parent_obj.tasks.find(:all, :conditions => conditions)
+      end
+      return task_base
     end
   end
-
+  
+  # Redirect to the active context or root path
+  def redirect_to_current_context
+    if current_project
+      redirect_to project_path(current_project)
+    elsif current_context
+      redirect_to context_path(current_context)
+    else
+      redirect_to root_path
+    end
+  end
+  
+  # Set current_project or current_context session variables based on a task's
+  # context or project
+  def set_context_session
+    if @object.project
+      session[:current_project] = @object.project.id
+    end
+    if @object.context
+      session[:current_context] = @object.context.id
+    end
+  end
+  
 end

@@ -1,0 +1,18 @@
+<h1>Editing Project</h1>
+
+<%= error_messages_for :project %>
+
+<% form_for(:project, :url => object_url, :html => { :method => :put }) do |f| %>
+  <%= render :partial => "form", :locals => { :f => f } %>
+  <p>
+    <%=submit_tag "Update"%>
+    <%= link_to("Cancel", :back) %> |
+    <%= link_to("Destroy", project_path(object), 
+      :method => :delete,
+      :confirm => "Are you sure you want to destroy this project?.") %>
+  </p>
+<% end %>
+
+<script type="text/javascript">
+    $('project_name').focus();
+</script>

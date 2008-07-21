@@ -29,7 +29,8 @@ class User < ActiveRecord::Base
 
 
   has_many :projects, :dependent => :destroy
-  has_many :tasks, :dependent => :destroy
+  has_many :tasks, :dependent => :destroy , :order => "completed asc, created_at desc"
+  has_many :completed_tasks, :conditions => "completed IS NOT NULL", :order => "completed asc, created_at desc"
   has_many :contexts, :dependent => :destroy
 
   def to_param

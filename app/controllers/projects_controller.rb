@@ -25,6 +25,11 @@ class ProjectsController < ResourceController::Base
     end
   end
   
+  destroy do 
+    after {session[:current_project] = nil }
+    wants.html { redirect_to root_path}
+  end
+  
   private
 
   def object
