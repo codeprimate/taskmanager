@@ -12,6 +12,7 @@ class ContextsController < ResourceController::Base
     @tasks = contextual_task_finder(object)
   end
 
+  # Reset Context to ALL
   def reset
     session[:current_context] = nil
     redirect_to_current_context

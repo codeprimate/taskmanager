@@ -4,6 +4,7 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
 
+  include AuthenticatedSystem
   include ApplicationHelper
 
   # See ActionController::RequestForgeryProtection for details
@@ -13,10 +14,9 @@ class ApplicationController < ActionController::Base
   # See ActionController::Base for details 
   # Uncomment this to filter the contents of submitted sensitive data parameters
   # from your application log (in this case, all fields with names like "password"). 
-  # filter_parameter_logging :password
+   filter_parameter_logging :password
 
-  include AuthenticatedSystem
-
+  
   # hacky hack! Overridden by resource_controller
   def parent_object
     nil
@@ -47,9 +47,8 @@ class ApplicationController < ActionController::Base
       conditions_str += recently_active_tasks_cond_str
       conditions_args += recently_active_tasks_cond_args
       conditions = [conditions_str] + conditions_args
-puts conditions.inspect
       if show_completed
-        parent_obj.tasks
+        return parent_obj.tasks
       else
         return parent_obj.tasks.find(:all, :conditions => conditions)
       end
@@ -60,7 +59,6 @@ puts conditions.inspect
         conditions = [recently_active_tasks_cond_str] + recently_active_tasks_cond_args
         return parent_obj.tasks.find(:all, :conditions => conditions)
       end
-      return task_base
     end
   end
   
