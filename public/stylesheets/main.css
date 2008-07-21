@@ -1,23 +1,9 @@
-p label {
-    vertical-align: top;
+a {
+    text-decoration: none;
 }
 
-ul.h li {
-    list-style: none;
-    display: inline;
-}
-
-.context_list {
-    font-size: 1.5em;
-}
-
-ul.context_list {
-    padding: 0;
-    margin: 0;
-}
-
-.context_list li {
-    padding-right: 1em;
+h1 {
+    font-size: 1.2em;
 }
 
 form label {
@@ -27,4 +13,57 @@ form label {
     font-weight: bold;
     text-align: right;
     margin-right: 0.5em;
+}
+
+p label {
+    vertical-align: top;
+}
+
+ul.h li {
+    list-style: none;
+    display: inline;
+}
+
+.context_list{
+    font-size: 1.3em;
+}
+
+.project_list {
+    font-size: 1.1em;
+}
+
+ul.context_list , ul.project_list {
+    padding: 0;
+    margin: 0 0 0.3em 0;
+}
+
+.context_list li , .project_list li {
+    padding: 0.2em;
+}
+
+.active_context {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+ul.task_list {
+    list-style-type: decimal;
+}
+
+
+hr {
+    height: 1px;
+    margin: 0;
+}
+
+div#management_links a {
+    padding: 0.25em;
+}
+
+div#management_links {
+    padding: 0.2em;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin-bottom: 1em;
+    text-align: right;
 }

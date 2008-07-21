@@ -1,5 +1,1 @@
-<ul class="h context_list">
-<% @user.contexts.each do |context| %>
-  <li><%= h context.name %></li>
-<% end %>
-</ul>
+<%= render :partial => "tasks/task_list", :locals => {:tasks => @tasks} %>

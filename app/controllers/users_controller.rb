@@ -43,5 +43,12 @@ class UsersController < ApplicationController
 
   def show
     @user = self.current_user
+    @tasks = @user.tasks
+    if current_context
+      @tasks = @tasks.select{|t| t.context_id = current_context.id}
+    end
+     if current_project
+      @tasks = @tasks.select{|t| t.project_id = current_project.id}
+    end
   end
 end

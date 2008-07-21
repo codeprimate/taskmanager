@@ -11,7 +11,22 @@ class ContextsController < ResourceController::Base
     end
   end
 
+  show do
+    after do
+      session[:current_context] = object.id
+      @tasks = contextual_task_finder(object)
+    end
+  end
 
+  def reset
+    session[:current_context] = nil
+    if current_project
+      redirect_to project_path(current_project)
+    else
+      redirect_to root_path
+    end
+  end
+  
   private
 
 

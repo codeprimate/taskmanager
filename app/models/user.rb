@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
 
   before_create :make_activation_code
   after_create :make_inbox_context
+  after_create :make_general_project
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
@@ -27,11 +28,11 @@ class User < ActiveRecord::Base
   attr_accessible :login, :email, :name, :password, :password_confirmation
 
 
-  has_many :projects
-  has_many :tasks
-  has_many :contexts
+  has_many :projects, :dependent => :destroy
+  has_many :tasks, :dependent => :destroy
+  has_many :contexts, :dependent => :destroy
 
-   def to_param
+  def to_param
     login
   end
 
@@ -41,6 +42,10 @@ class User < ActiveRecord::Base
 
   def make_inbox_context
     contexts.create(:name => "Inbox")
+  end
+  
+  def make_general_project
+    projects.create(:name => "General")
   end
 
   # Activates the user in the database.

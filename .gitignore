@@ -1,4 +1,4 @@
 nbproject
 log/*
 tmp/*
-db/*.sqlite3
+db/development.sqlite3

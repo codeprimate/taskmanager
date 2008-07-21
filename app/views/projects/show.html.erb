@@ -1,5 +1,4 @@
-<h1><%= h @object.name %></h1>
-<p><%= h @object.note %></p>
+<%= render :partial => "tasks/task_list", :locals => {:tasks => @tasks} %>
 
 <%= link_to 'Edit', edit_object_url %>
 |

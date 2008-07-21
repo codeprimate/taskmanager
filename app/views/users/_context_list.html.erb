@@ -1,0 +1,10 @@
+<ul class="h context_list">
+  <% self.current_user.contexts.each do |context| %>
+    <% if context.id == current_context_id %>
+      <li><%= link_to(h(context.name), context_url(context), :class => "active_context") %></li>
+    <% else %>
+      <li><%= link_to(h(context.name), context_url(context)) %></li>
+    <% end %>
+  <% end %>
+  <li><%= link_to("All", reset_contexts_path, :class => (current_context ? "" : "active_context")) %></li>
+</ul>

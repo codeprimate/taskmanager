@@ -1,0 +1,10 @@
+<ul class="h project_list">
+  <% self.current_user.projects.each do |project| %>
+    <% if project.id == current_project_id %>
+      <li><%= link_to(h(project.name), project_url(project), :class => "active_context") %></li>
+    <% else %>
+      <li><%= link_to(h(project.name), project_url(project)) %></li>
+    <% end %>
+  <% end %>
+  <li><%= link_to("All", reset_projects_path, :class => (current_project ? "" : "active_context")) %></li>
+</ul>

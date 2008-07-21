@@ -1,11 +1,15 @@
 <p>
     <label for="context">Context</label>
-    <%= f.select :context_id, self.current_user.contexts.collect{|c| [h(c.name), c.id]}%>
+    <%= f.select :context_id, 
+                 self.current_user.contexts.collect{|c| [h(c.name), c.id]}, 
+                 {:selected => @object.context_id}%>
 </p>
 
 <p>
     <label for="context">Project</label>
-    <%= f.select :project_id, self.current_user.projects.collect{|p| [h(p.name), p.id]}, {:include_blank => true}%>
+    <%= f.select :project_id, 
+                 self.current_user.projects.collect{|p| [h(p.name), p.id]}, 
+                 {:include_blank => true, :selected => @object.project_id}%>
 </p>
 
 <p>
