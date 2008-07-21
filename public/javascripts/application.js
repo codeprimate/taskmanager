@@ -1,2 +1,3 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+function app_popup(url) {
+  window.open (url, "mywindow","location=no,status=yes,scrollbars=yes,address=no, width=500,height=300"); 
+}

@@ -13,6 +13,7 @@
     
     <% if logged_in? %>
       <div style="float: right;">
+        <%= link_to_function("Popup", "app_popup('#{request.url}')") %> | 
         <%= link_to "Logout", logout_path %>
       </div>
     <% end  %>
