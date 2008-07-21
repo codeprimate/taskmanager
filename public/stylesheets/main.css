@@ -48,6 +48,7 @@ ul.context_list , ul.project_list {
 
 ul.task_list {
     list-style-type: none;
+    margin: 0;
     margin-left: 0;
     padding-left: 1em;
 }
@@ -64,9 +65,9 @@ div#management_links a {
 
 div#management_links {
     padding: 0.2em;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
-    margin-bottom: 1em;
+    border-top: 3px solid black;
+    border-bottom: 2px solid black;
+    margin-bottom: 0.25em;
     text-align: center;
 }
 
@@ -88,4 +89,8 @@ table td {
 table th {
     text-align: left;
     padding-right: 2em;
+}
+
+fieldset {
+    margin: 0;
 }
