@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   before_create :make_activation_code
   after_create :make_inbox_context
   after_create :make_general_project
+  after_create :activate!
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
