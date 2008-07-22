@@ -5,26 +5,24 @@
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>TaskManager: <%= controller.action_name.capitalize %> <%= params[:controller].capitalize %> </title>
-    <%= stylesheet_link_tag 'scaffold' %>
     <%= stylesheet_link_tag 'main' %>
-    <%= javascript_include_tag :defaults  %>
+    <%= javascript_include_tag 'prototype'  %>
   </head>
   <body>
     
-    <% if logged_in? %>
-      <div style="float: right;">
-        <%= link_to_function("Popup", "app_popup('#{request.url}')") %> | 
-        <%= link_to "Logout", logout_path %>
-      </div>
-    <% end  %>
-        
     <p style="color: green"><%= flash[:notice] %></p>
     
     <% if logged_in? %>
-      <%= render :partial => "users/context_list" %>
-      <%= render :partial => "users/project_list" %>
-        
-        
+      <div style="float: right; padding-right: 0.5em;">
+        <%= link_to_function("Popup", "app_popup('#{request.url}')") %> | 
+        <%= link_to "Logout", logout_path %>
+      </div>
+
+      <div id="context_lists">
+        <%= render :partial => "users/context_list" %>
+        <%= render :partial => "users/project_list" %>
+      </div>
+    
       <div id="management_links">
         <%= link_to("New Task", new_task_path) %>
         <%= render :partial => "users/manage_context" %>
@@ -32,10 +30,10 @@
       </div>
     
     <% end %>
-       
+           
     <div style="clear: both;"></div>
     
     <%= yield  %>
-
+    
   </body>
 </html>

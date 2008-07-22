@@ -1,3 +1,58 @@
+body { background-color: #fff; color: #333; }
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: #000; }
+a:hover { text-decoration: underline;}
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+
+
 a {
     text-decoration: none;
 }
@@ -7,7 +62,7 @@ h1 {
 }
 
 form label {
-    width: 5em;
+    width: 7em;
     display: block;
     float: left;
     font-weight: bold;
@@ -41,6 +96,10 @@ ul.context_list , ul.project_list {
     padding: 0.2em;
 }
 
+ul.project_list {
+    margin-left: 1em;
+}
+
 .active_context {
     font-weight: bold;
     font-size: 1.5em;
@@ -59,6 +118,12 @@ hr {
     margin: 0;
 }
 
+div#context_lists {
+  border: 1px solid black;
+  padding: 0.5em;
+  background: #eee;
+}
+
 div#management_links a {
     padding: 0.25em;
 }
@@ -69,7 +134,10 @@ div#management_links {
     border-bottom: 2px solid black;
     margin-bottom: 0.25em;
     text-align: center;
+    font-weight: bold;
 }
+
+
 
 .completed {
     text-decoration: line-through;
