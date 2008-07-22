@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   # completed tasks. Default is false.
   def contextual_task_finder(parent_obj, show_completed=false)
     recently_active_tasks_cond_str = " AND (completed IS NULL OR completed >= ?)"
-    recently_active_tasks_cond_args = [(Time.now - 1.day).to_s(:db)]
+    recently_active_tasks_cond_args = [(Time.now - 1.hour).to_s(:db)]
     if (current_project || current_context)
       conditions_arr = []
       conditions_args = []
