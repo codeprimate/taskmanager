@@ -4,7 +4,9 @@
     :style => "vertical-align: middle;") %>
   <%= observe_field("toggle_task_#{task.id}", 
     :url => toggle_complete_task_path(:id => task.id)) %>
+  
   <span class="<%= "completed" if task.completed%>">
     <%= link_to(h(task.name), edit_task_path(task)) %>
-  </span>
+  </span> 
+  <i>[<%= (task.context ? task.context.name : "none")%>:<%= (task.project ? task.project.name : "(none)")%>]</i>
 </li>
