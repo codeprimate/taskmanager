@@ -1,6 +1,9 @@
 <fieldset>
   <legend>Tasks</legend>
-<ul class="task_list">
+  <ul class="task_list">
     <%= render :partial => "tasks/task", :collection => tasks %>
-</ul>
+    <% if tasks.empty?  %>
+      <li><b>None</b></li>
+    <% end %>
+  </ul>
 </fieldset>
