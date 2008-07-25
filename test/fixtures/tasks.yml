@@ -1,3 +1,22 @@
+# == Schema Information
+# Schema version: 20080719175833
+#
+# Table name: tasks
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)     
+#  project_id :integer         
+#  context_id :integer         
+#  user_id    :integer         
+#  due        :datetime        
+#  completed  :datetime        
+#  note       :text            
+#  time_spent :integer         
+#  created_at :datetime        
+#  updated_at :datetime        
+#  permalink  :string(255)     
+#
+
 one:
   id: 1
 two:

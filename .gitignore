@@ -1,6 +1,9 @@
 nbproject
 log/*
 tmp/*
-db/development.sqlite3
 config/deploy.rb
 Capfile
+db/development.sqlite3
+config/database.yml
+
+

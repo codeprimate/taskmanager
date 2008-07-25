@@ -1,7 +1,19 @@
-class Context < ActiveRecord::Base
-  has_permalink :name
+# == Schema Information
+# Schema version: 20080719175833
+#
+# Table name: contexts
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)     
+#  note       :text            
+#  user_id    :integer         
+#  created_at :datetime        
+#  updated_at :datetime        
+#  permalink  :string(255)     
+#
 
-  has_many :tasks, :order => "completed asc, created_at desc"
+class Context < ActiveRecord::Base
+  has_many :tasks
   belongs_to :user
 
   validates_presence_of :name
@@ -10,6 +22,8 @@ class Context < ActiveRecord::Base
 
   attr_protected :user_id
 
+  has_permalink :name
+  
   def to_param
     permalink
   end

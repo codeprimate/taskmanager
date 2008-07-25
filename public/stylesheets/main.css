@@ -162,3 +162,16 @@ table th {
 fieldset {
     margin: 0;
 }
+
+span.task_meta {
+    font-size: 0.8em;
+}
+
+a.overdue  {
+    color: red;
+    font-weight: bold;  
+}
+
+a.urgent {
+    font-weight: bold;  
+}

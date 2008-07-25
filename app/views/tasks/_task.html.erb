@@ -4,9 +4,14 @@
     :style => "vertical-align: middle;") %>
   <%= observe_field("toggle_task_#{task.id}", 
     :url => toggle_complete_task_path(:id => task.id)) %>
-  
+    
   <span class="<%= "completed" if task.completed%>">
-    <%= link_to(h(task.name), edit_task_path(task)) %>
+    <%= link_to(h(task.name), edit_task_path(task), :class => "task_link #{task.priority_string}") %>
   </span> 
-  <i>[<%= (task.context ? task.context.name : "none")%>:<%= (task.project ? task.project.name : "(none)")%>]</i>
+  
+  <span class="task_meta">
+    [<%= (task.context ? link_to(h(task.context.name), context_path(task.context)) : "none")%>:<%= (task.project ? link_to(h(task.project.name), project_path(task.project)) : "(none)")%>]
+    (<%= "overdue " if task.due < Time.now%><%= time_ago_in_words(task.due)%>)
+  </span>
+  
 </li>

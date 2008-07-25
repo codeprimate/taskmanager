@@ -1,5 +1,19 @@
+# == Schema Information
+# Schema version: 20080719175833
+#
+# Table name: projects
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)     
+#  note       :text            
+#  user_id    :integer         
+#  created_at :datetime        
+#  updated_at :datetime        
+#  permalink  :string(255)     
+#
+
 class Project < ActiveRecord::Base
-  has_many :tasks, :dependent => :destroy, :order => "completed asc, created_at desc"
+  has_many :tasks, :dependent => :destroy
   belongs_to :user
   validates_presence_of :name
   validates_presence_of :user_id
