@@ -1,7 +1,5 @@
 class Context < ActiveRecord::Base
-  has_permalink :name
-
-  has_many :tasks, :order => "completed asc, created_at desc"
+  has_many :tasks
   belongs_to :user
 
   validates_presence_of :name
@@ -10,6 +8,8 @@ class Context < ActiveRecord::Base
 
   attr_protected :user_id
 
+  has_permalink :name
+  
   def to_param
     permalink
   end

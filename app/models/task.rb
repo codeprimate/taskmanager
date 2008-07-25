@@ -12,7 +12,20 @@ class Task < ActiveRecord::Base
     permalink
   end
 
-#  def find_by_param(*args)
-#    find(*args)
-#  end
+  def find_by_param(*args)
+    find_by_permalink(*args)
+  end
+  
+  def priority_string
+    time_left = (due || Time.now) - Time.now
+    if time_left < 0
+      return "overdue"
+    end
+    if time_left < 1.day
+      return "urgent"
+    end
+    if time_left > 1.day
+      return "normal"
+    end
+  end
 end
