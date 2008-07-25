@@ -1,3 +1,17 @@
+# == Schema Information
+# Schema version: 20080719175833
+#
+# Table name: contexts
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)     
+#  note       :text            
+#  user_id    :integer         
+#  created_at :datetime        
+#  updated_at :datetime        
+#  permalink  :string(255)     
+#
+
 class Context < ActiveRecord::Base
   has_many :tasks
   belongs_to :user
