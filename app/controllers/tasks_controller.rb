@@ -28,16 +28,19 @@ class TasksController < ResourceController::Base
   end
   
   def toggle_complete
-    @object = self.current_user.tasks.find(params[:id])
-    if @object.completed.nil?
-      @object.completed = Time.now
-    else
-      @object.completed = nil
-    end
-    @object.save
+    object.completed = (object.completed.nil? ? Time.now : nil)
+    object.save
     respond_to do |format|
       format.js { }
-      format.xml { render :xml => @object.to_xml }
+      format.xml { render :xml => object.to_xml }
+    end
+  end
+  
+  def increment_time
+    object.increment!(time_spent, (params[:time].to_i || 1))
+    respond_to do |format|
+      format.js { }
+      format.xml { render :xml => object.to_xml}
     end
   end
   

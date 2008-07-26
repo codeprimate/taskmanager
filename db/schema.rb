@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080719175833) do
+ActiveRecord::Schema.define(:version => 20080726035340) do
 
   create_table "contexts", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20080719175833) do
     t.string   "permalink"
   end
 
+  add_index "contexts", ["permalink"], :name => "index_contexts_on_permalink"
   add_index "contexts", ["user_id"], :name => "index_contexts_on_user_id"
 
   create_table "projects", :force => true do |t|
@@ -31,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20080719175833) do
     t.string   "permalink"
   end
 
+  add_index "projects", ["permalink"], :name => "index_projects_on_permalink"
   add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
 
   create_table "tasks", :force => true do |t|
@@ -47,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20080719175833) do
     t.string   "permalink"
   end
 
+  add_index "tasks", ["permalink"], :name => "index_tasks_on_permalink"
   add_index "tasks", ["user_id"], :name => "index_tasks_on_user_id"
   add_index "tasks", ["context_id"], :name => "index_tasks_on_context_id"
   add_index "tasks", ["project_id"], :name => "index_tasks_on_project_id"
