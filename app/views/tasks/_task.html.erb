@@ -9,6 +9,11 @@
     <%= link_to(h(task.name), edit_task_path(task), :class => "task_link #{task.priority_string}") %>
   </span> 
   
+  <%= prepare_named_executer("pe", task.id) %>
+  <span class="timer" id="timer_<%= task.id%>">
+    <%= render :partial => "tasks/inactive_timer" , :locals => {:task => task} %>
+  </span>
+  
   <span class="task_meta">
     [<%= (task.context ? link_to(h(task.context.name), context_path(task.context)) : "none")%>:<%= (task.project ? link_to(h(task.project.name), project_path(task.project)) : "(none)")%>]
     (<%= "overdue " if task.due < Time.now%><%= time_ago_in_words(task.due)%>)

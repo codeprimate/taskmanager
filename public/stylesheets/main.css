@@ -163,6 +163,11 @@ fieldset {
     margin: 0;
 }
 
+legend {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
 span.task_meta {
     font-size: 0.8em;
 }
@@ -174,4 +179,20 @@ a.overdue  {
 
 a.urgent {
     font-weight: bold;  
+}
+
+span.timer img {
+    vertical-align: middle;
+}
+
+span.active_timer {
+    background-color: lightgreen;
+}
+
+span.timer {
+    padding: 0 0.25em 0.25em 0.25em;
+}
+
+span.active_timer {
+    background-color: light-green;
 }

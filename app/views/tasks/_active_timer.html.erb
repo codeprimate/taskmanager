@@ -1,6 +1,2 @@
-<%#
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-%>
-
-<%= "_active_timer.html.erb" %>
+<%= link_to_remote(image_tag("animated_clock.gif", :border => 0), :url => toggle_timer_task_path(:id => task.to_param, :disable => 1) ) %><%= task.time_spent || 0 %>
+<%= named_periodical_executer({:url => increment_time_task_path(task), :frequency => '6'}, "pe", task.id) if @enable %>

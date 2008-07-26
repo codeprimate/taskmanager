@@ -11,7 +11,8 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :tasks,
       :collection => {:completed => :get},
       :member => { :toggle_complete => :post,
-                   :increment_time => :post } 
+                   :increment_time => :post,
+                   :toggle_timer => :post } 
                    
   end
 
@@ -20,7 +21,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :tasks,
     :collection => { :completed => :get},
     :member => {:toggle_complete => :post,
-                :increment_time => :post} 
+                :increment_time => :post,
+                :toggle_timer => :post
+                } 
                 
 
   map.resource :session

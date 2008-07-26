@@ -14,45 +14,45 @@ ActiveRecord::Schema.define(:version => 20080726035340) do
   create_table "contexts", :force => true do |t|
     t.string   "name"
     t.text     "note"
-    t.integer  "user_id"
+    t.integer  "user_id",    :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "permalink"
   end
 
-  add_index "contexts", ["permalink"], :name => "index_contexts_on_permalink"
   add_index "contexts", ["user_id"], :name => "index_contexts_on_user_id"
+  add_index "contexts", ["permalink"], :name => "index_contexts_on_permalink"
 
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.text     "note"
-    t.integer  "user_id"
+    t.integer  "user_id",    :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "permalink"
   end
 
-  add_index "projects", ["permalink"], :name => "index_projects_on_permalink"
   add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
+  add_index "projects", ["permalink"], :name => "index_projects_on_permalink"
 
   create_table "tasks", :force => true do |t|
     t.string   "name"
-    t.integer  "project_id"
-    t.integer  "context_id"
-    t.integer  "user_id"
+    t.integer  "project_id", :limit => 11
+    t.integer  "context_id", :limit => 11
+    t.integer  "user_id",    :limit => 11
     t.datetime "due"
     t.datetime "completed"
     t.text     "note"
-    t.integer  "time_spent"
+    t.integer  "time_spent", :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "permalink"
   end
 
-  add_index "tasks", ["permalink"], :name => "index_tasks_on_permalink"
-  add_index "tasks", ["user_id"], :name => "index_tasks_on_user_id"
-  add_index "tasks", ["context_id"], :name => "index_tasks_on_context_id"
   add_index "tasks", ["project_id"], :name => "index_tasks_on_project_id"
+  add_index "tasks", ["context_id"], :name => "index_tasks_on_context_id"
+  add_index "tasks", ["user_id"], :name => "index_tasks_on_user_id"
+  add_index "tasks", ["permalink"], :name => "index_tasks_on_permalink"
 
   create_table "users", :force => true do |t|
     t.string   "login",                     :limit => 40

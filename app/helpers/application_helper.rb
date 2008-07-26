@@ -27,7 +27,7 @@ module ApplicationHelper
     else
       @current_context ||= (current_context_from_session || self.current_user.contexts.find_by_permalink(params[:context_id]))
     end
-#    @current_context ||= self.current_user.contexts.find_by_name("Inbox")
+    #    @current_context ||= self.current_user.contexts.find_by_name("Inbox")
     return @current_context
   end
 
@@ -48,6 +48,37 @@ module ApplicationHelper
 
   def current_project_id
     return (@current_project_id ||= (current_project ? current_project.id : nil))
+  end
+  
+  # Call this to prepare the named PeriodicalExecuter, and only from a regular view,
+  #  not from AJAX
+  def prepare_named_executer(js_prefix, object_id)
+    js_var = "#{js_prefix}_#{object_id}"
+    code = "
+  <script type='text/javascript'>
+      var #{js_var} = null;
+      function stop_executer_#{js_var}(){
+        #{js_var}.stop();
+        return false;
+      }
+  </script>"
+  end
+  
+  # Creates a PeriodicalExecutor bound to a variable so that it may be stopped
+  #  prepare_named_executer() must be called in a regular view first with the same name
+  # this is due to a javascript variable scope issue
+  def named_periodical_executer(options, js_prefix, object_id)
+    js_var = "#{js_prefix}_#{object_id}"
+    frequency = options[:frequency] || 10 # every ten seconds by default
+    code = "#{js_var} = new PeriodicalExecuter(function() {#{remote_function(options)}}, #{frequency});"
+    javascript_tag(code)
+  end
+
+  # Stop the named PeriodicalExecuter
+  def stop_named_periodical_executer(js_prefix, object_id)
+    js_var = "#{js_prefix}_#{object_id}"
+    code = "stop_executer_#{js_var}()"
+    javascript_tag(code)
   end
 
 end

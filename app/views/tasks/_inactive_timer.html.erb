@@ -1,1 +1,1 @@
-<%= link_to_remote(image_tag("")) %>
+<%= link_to_remote(image_tag("clock.gif", :border => 0), :url => toggle_timer_task_path(:id => task.to_param, :time => 1) ) %><%= task.time_spent || 0 %>

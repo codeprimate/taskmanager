@@ -26,3 +26,9 @@
   <label for="note">Note</label>
   <%= f.text_area :note, :size => "50x5" %>
 </p>
+
+<p>
+  <label for="time_spent">Time</label>
+  <%= f.text_field :time_spent, :size => 5 %>
+  <%= button_to_function("Reset", "$('task_time_spent').value = ''") %>
+</p>

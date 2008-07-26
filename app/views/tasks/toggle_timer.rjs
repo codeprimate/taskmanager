@@ -1,0 +1,8 @@
+if @enable
+  page.replace_html "timer_#{@object.id}", :partial => "tasks/active_timer", :locals => {:task => @object}
+  page << "$('timer_#{@object.id}').addClassName('active_timer')"
+else
+  page.replace_html "timer_#{@object.id}", :partial => "tasks/inactive_timer", :locals => {:task => @object}
+  page << "stop_executer_pe_#{@object.id}()"
+  page << "$('timer_#{@object.id}').removeClassName('active_timer')"
+end

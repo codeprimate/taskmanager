@@ -37,10 +37,20 @@ class TasksController < ResourceController::Base
   end
   
   def increment_time
-    object.increment!(time_spent, (params[:time].to_i || 1))
+    object.time_spent ||= 0 
+    object.time_spent += 1
+    object.save!
+    object.reload
+    respond_to do |format|
+      format.js {}
+    end
+  end
+  
+  def toggle_timer
+    object
+    @enable = params[:disable].nil?
     respond_to do |format|
       format.js { }
-      format.xml { render :xml => object.to_xml}
     end
   end
   
