@@ -49,7 +49,7 @@ Rails::Initializer.run do |config|
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
     :session_key => '_taskmanager_session',
-    :secret      => '7956ab05fb9aef409ca255841d7d74c4df007eb126ded0c1c072a926e7a9369665548b83880332263cf74a1b35b142c4e42cec4bd87adf79de8c8ced0d28fe67'
+    :secret      => '48fa9e4a58de76691ca7c4f82084e7be07c8a055439ff89630bd87c0d00b12fb99193d4f6d7c417928232184a1310194a9f4b7b51ca559c922c0b150c0802577'
   }
 
   # Use the database for sessions instead of the cookie-based default,
