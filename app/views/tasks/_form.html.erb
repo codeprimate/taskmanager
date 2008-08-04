@@ -1,3 +1,6 @@
+
+<link href="/stylesheets/scal.css" rel="stylesheet" type="text/css"/>
+
 <p>
   <label for="context">Context</label>
   <%= f.select :context_id, 
@@ -12,10 +15,15 @@
     {:include_blank => true, :selected => @object.project_id}%>
 </p>
 
-<p>
-  <label for="due">Due</label>
-  <%= f.datetime_select :due, :default => 1.day.from_now %>
-</p>
+<div>
+	<p>
+		<label for="due">Due</label>
+	  	<%= f.text_field :due, :onclick => "$('taskcal').show()" %>
+	</p>
+</div>
+
+<div id="taskcal" class="scal tinyscal" style="margin-left: 100px; display: none;"></div>
+
 
 <p>
   <label for="name">Name</label>
@@ -32,3 +40,12 @@
   <%= f.text_field :time_spent, :size => 5 %>
   <%= button_to_function("Reset", "$('task_time_spent').value = ''") %>
 </p>
+
+
+<script type="text/javascript" src="/javascripts/scal.js"> </script>
+<script type="text/javascript">
+	<% due_date = @object.due || Date.today %>
+	var taskcal_obj = new scal('taskcal', 'task_due');
+	var taskcal_date = new Date('<%= due_date.year %>','<%= due_date.month - 1 %>','<%= due_date.day %>')
+	taskcal_obj.setCurrentDate(taskcal_date)
+</script>
