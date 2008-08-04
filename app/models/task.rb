@@ -18,12 +18,22 @@
 #
 
 class Task < ActiveRecord::Base
+  ACTIVE_COMPLETED_CUTOFF = 1  # active tasks may have been completed within this many hours ago
+  
   belongs_to :project
   belongs_to :context
   belongs_to :user
 
   validates_presence_of :name, :user_id, :context_id
   validates_uniqueness_of :name, :scope => [:user_id, :project_id, :context_id]
+
+  named_scope :active, lambda { 
+      { :conditions => "tasks.completed >= '#{(Time.now - ACTIVE_COMPLETED_CUTOFF.hours).to_s(:db)}' OR tasks.completed IS NULL", 
+        :order => "completed asc, created_at desc"}
+    }
+    
+  named_scope :incomplete, :conditions => "completed IS NULL", :order => "completed asc, created_at desc"
+  named_scope :complete, :conditions => "completed IS NOT NULL", :order => "completed asc, created_at desc"
 
   has_permalink :name
 

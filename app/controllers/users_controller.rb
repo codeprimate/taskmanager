@@ -43,7 +43,7 @@ class UsersController < ApplicationController
 
   def show
     @user = self.current_user
-    @tasks = @user.tasks
+    @tasks = @user.tasks.active
     if current_context
       @tasks = @tasks.select{|t| t.context_id = current_context.id}
     end

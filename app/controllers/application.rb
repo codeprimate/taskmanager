@@ -30,8 +30,6 @@ class ApplicationController < ActionController::Base
   # Optionally provide a second argument to indicate whether to return 
   # completed tasks. Default is false.
   def contextual_task_finder(parent_obj, show_completed=false)
-    recently_active_tasks_cond_str = " AND (completed IS NULL OR completed >= ?)"
-    recently_active_tasks_cond_args = [(Time.now - 12.hours).to_s(:db)]
     order_str = "due ASC"
     if (current_project || current_context)
       conditions_arr = []
@@ -45,20 +43,18 @@ class ApplicationController < ActionController::Base
         conditions_args << current_project.id
       end
       conditions_str = conditions_arr.join(' AND ')
-      conditions_str += recently_active_tasks_cond_str
-      conditions_args += recently_active_tasks_cond_args
       conditions = [conditions_str] + conditions_args
       if show_completed
         return parent_obj.tasks
       else
-        return parent_obj.tasks.find(:all, :conditions => conditions, :order => order_str)
+        return parent_obj.tasks.active.find(:all, :conditions => conditions, :order => order_str)
       end
     else
       if show_completed
         return parent_obj.tasks
       else
         conditions = [recently_active_tasks_cond_str] + recently_active_tasks_cond_args
-        return parent_obj.tasks.find(:all, :conditions => conditions, :order => order_str)
+        return parent_obj.tasks.active.find(:all, :conditions => conditions, :order => order_str)
       end
     end
   end
