@@ -46,7 +46,7 @@ class Task < ActiveRecord::Base
   end
   
   def priority_string
-    time_left = (due || Time.now) - Time.now
+    time_left = (due || Date.today).to_date - Date.today
     if time_left < 0
       return "overdue"
     end

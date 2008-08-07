@@ -183,6 +183,7 @@ a.urgent {
 
 span.timer img {
     vertical-align: middle;
+	padding-right: 3px;
 }
 
 span.active_timer {
