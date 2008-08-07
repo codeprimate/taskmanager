@@ -18,6 +18,11 @@ class ContextsController < ResourceController::Base
     redirect_to_current_context
   end
   
+   destroy do 
+    after {session[:current_context] = nil }
+    wants.html {redirect_to_current_context }
+  end
+  
   private
 
   def object

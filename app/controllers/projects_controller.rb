@@ -27,7 +27,7 @@ class ProjectsController < ResourceController::Base
   
   destroy do 
     after {session[:current_project] = nil }
-    wants.html { redirect_to root_path}
+    wants.html { redirect_to_current_context }
   end
   
   private
