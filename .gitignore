@@ -1,9 +1,11 @@
 nbproject
-log/*
+log/*.log
 tmp/*
 config/deploy.rb
 Capfile
 db/development.sqlite3
 config/database.yml
+coverage/**/*
+doc/spec/**/*
 
 
