@@ -1,0 +1,47 @@
+<h2>Listing <%= plural_name.titleize %></h2>
+
+<ul class="linkbar">
+	<%%= link_to "New <%= model_name %>", new_object_url, :wrap_in=>'li' %>
+</ul>
+
+<%% if @collection_count > 0 %>
+<table>
+	<thead>
+		<tr>
+<% for attribute in attributes -%>
+			<th><%%= order_by_link :<%= attribute.name %> %></th>
+<% end -%>
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+	  <%%- collection.each do |object| %>
+		<tr class="<%%= cycle('','alt')%>">
+			<%- for attribute in attributes -%>
+			<td><%%=h object.<%= attribute.name %> %></td>
+			<%- end -%>    
+			<td class="icon"><%%= object_edit_link(object, :icon) %></td>
+			<td class="icon"><%%= object_state_link(object, :icon) %></td>
+			<td class="icon"><%%= object_destroy_link(object, :icon) %></td>
+		</tr>
+	  <%% end %>		
+	</tbody>
+</table>
+
+<br />
+<br />  
+<%%= @collection_count %> <%= plural_name.titleize %> found
+Per page: <%%= per_page_select %>
+
+<br />
+<br />
+
+<%% if @search.page_count > 1 %>
+<div class="pages"><%%= page_links :spread => 1 %></div>
+<%% end %>
+
+<%% else %>
+No <%= plural_name.titleize %> were returned
+<%% end %>

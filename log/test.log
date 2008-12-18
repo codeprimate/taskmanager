@@ -1,2 +1,0 @@
-  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
-  [4;35;1mSQL (0.4ms)[0m   [0mCREATE DATABASE `taskmanager_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_general_ci`[0m

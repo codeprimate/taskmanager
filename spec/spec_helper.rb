@@ -5,7 +5,7 @@ require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'spec'
 require 'spec/rails'
 
-require File.expand_path(File.dirname(__FILE__) + "/mocks/mock_helper")
+require File.expand_path(File.dirname(__FILE__) + "/helpers/mock_helper")
 include MockHelper
 
 include AuthenticatedTestHelper

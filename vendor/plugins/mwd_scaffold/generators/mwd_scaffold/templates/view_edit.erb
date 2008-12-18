@@ -1,0 +1,18 @@
+<h2>Editing <%= singular_name.titleize %></h2>
+
+<ul class="linkbar">
+	<%%= link_to 'Show', object_url, :wrap_in=>'li' %>
+	<%%= link_to 'Back', collection_url, :wrap_in=>'li' %>
+</ul>
+
+<%%= error_messages_for :<%= singular_name %> %>
+
+<%% form_for(:<%= singular_name %>, :url => object_url, :html => { :method => :put }) do |f| %>
+	<fieldset>
+		<legend><%= singular_name.titleize %></legend>
+	  	<%%= render :partial => "form", :locals => { :f => f } %>
+	  	<p>
+	    	<%%=submit_tag "Update", :class=>'submit' %>
+	  	</p>
+	</fieldset>
+<%% end %>

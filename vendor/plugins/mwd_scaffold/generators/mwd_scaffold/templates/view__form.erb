@@ -1,0 +1,7 @@
+<%- for attribute in attributes -%>
+<div class="input_field">
+	<label for="<%= singular_name %>_<%= attribute.name %>"><%= attribute.column.human_name %>:</label>
+	<%%= f.<%= attribute.field_type %> :<%= attribute.name %> %>
+	<span class="field_desc"></span>
+</div>
+<% end -%>
